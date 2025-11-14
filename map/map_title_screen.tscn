@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0qtikbty3yy8"]
+
+[ext_resource type="Texture2D" uid="uid://cqay6ufmqbrxv" path="res://bkg/bkg_studioguma_logo.png" id="1_v6p8y"]
+[ext_resource type="PackedScene" uid="uid://ckwi1j1g6ph4m" path="res://src/text_box.tscn" id="2_ak2if"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ak2if"]
+texture = ExtResource("1_v6p8y")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ig5kc"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_ak2if")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ak2if"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ig5kc"]
+
+[node name="TileMapLayer" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 28, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_ig5kc")
+
+[node name="Label" parent="." instance=ExtResource("2_ak2if")]
+offset_top = 77.0
+offset_right = 320.0
+offset_bottom = 199.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ak2if")
+text = "And the Tortoise Won
+
+an interactive fable
+
+
+
+
+
+
+2025 StudioGuma
+Made with Godot 4.5"
+horizontal_alignment = 1
+
+[node name="Label2" parent="." instance=ExtResource("2_ak2if")]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 163.0
+offset_bottom = 43.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ig5kc")
+text = "v1.0
+Code: GPLv3
+Assets: CC BY-SA"

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckwi1j1g6ph4m"]
+
+[ext_resource type="Texture2D" uid="uid://daswlqwoinot0" path="res://bkg/bkg_text_box.png" id="1_d0rgj"]
+[ext_resource type="FontFile" uid="uid://b70jj5lsolqem" path="res://bkg/bkg_font.png" id="2_d0rgj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_polir"]
+texture = ExtResource("1_d0rgj")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_ejigk"]
+font_size = 8
+
+[node name="Label" type="Label"]
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("2_d0rgj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_polir")
+label_settings = SubResource("LabelSettings_ejigk")
+autowrap_mode = 2
+justification_flags = 0
