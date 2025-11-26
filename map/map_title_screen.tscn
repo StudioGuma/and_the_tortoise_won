@@ -44,6 +44,6 @@ offset_top = 2.0
 offset_right = 163.0
 offset_bottom = 43.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ig5kc")
-text = "v1.0
+text = "v1.1
 Code: GPLv3
 Assets: CC BY-SA"
