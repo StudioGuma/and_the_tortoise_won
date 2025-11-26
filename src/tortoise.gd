@@ -3,6 +3,9 @@ extends CharacterBody2D
 
 var _tortoise_sprite: AnimatedSprite2D
 
+func _init() -> void:
+	set_motion_mode(MOTION_MODE_FLOATING)
+
 func _ready() -> void:
 	_tortoise_sprite = get_child(0)
 	set_position(Vector2i(

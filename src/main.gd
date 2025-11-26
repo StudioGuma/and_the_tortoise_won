@@ -51,8 +51,8 @@ func _init() -> void:
 		add_child(_sound_player)
 		add_child(_music_player)
 
-		print("And the Tortoise Won by StudioGuma")
-		print("Made with Godot 4.5.1 (https://godotengine.org/license)")
+		print("And the Tortoise Won v1.1 by StudioGuma")
+		print("https://godotengine.org/license")
 
 	else:
 		queue_free()
@@ -130,7 +130,7 @@ func get_map_key() -> String:
 
 func set_map(key: String) -> void:
 	if not (key.is_empty()):
-		if not (_cur_map == null):
+		if (_cur_map):
 			_cur_map.queue_free()
 
 		var map_dict: Dictionary = Globals.MAPS_JSON.get(key)

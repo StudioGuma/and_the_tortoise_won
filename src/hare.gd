@@ -8,11 +8,60 @@ var _collided_prev: bool
 
 var _speed: int = 0b100000000
 
+var _mouse_right: InputEventAction = InputEventAction.new()
+var _mouse_left: InputEventAction = InputEventAction.new()
+var _mouse_down: InputEventAction = InputEventAction.new()
+var _mouse_up: InputEventAction = InputEventAction.new()
+var _mouse_pos: Vector2
+
+func _init() -> void:
+	set_motion_mode(MOTION_MODE_FLOATING)
+
 func _ready() -> void:
 	_hare_sprite = get_child(0)
 
+	_mouse_right.set_action("right")
+	_mouse_left.set_action("left")
+	_mouse_down.set_action("down")
+	_mouse_up.set_action("up")
+
 func _process(_delta: float) -> void:
 	if not (Main.get_singleton().is_dialogue()):
+		_mouse_right.set_pressed(false)
+		_mouse_left.set_pressed(false)
+		_mouse_down.set_pressed(false)
+		_mouse_up.set_pressed(false)
+
+		if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+			_mouse_pos = get_viewport().get_mouse_position()
+
+			_mouse_right.set_pressed(_mouse_pos.x > (Globals.SCREEN_SIZE.x >> 1))
+			_mouse_left.set_pressed(_mouse_pos.x < (Globals.SCREEN_SIZE.x >> 1))
+			_mouse_down.set_pressed(_mouse_pos.y > (Globals.SCREEN_SIZE.y >> 1))
+			_mouse_up.set_pressed(_mouse_pos.y < (Globals.SCREEN_SIZE.y >> 1))
+
+			_mouse_right.set_strength(
+				(_mouse_pos.x - float(Globals.SCREEN_SIZE.x >> 1))
+				/float(Globals.SCREEN_SIZE.x >> 0b10)
+			)
+			_mouse_left.set_strength(
+				(float(Globals.SCREEN_SIZE.x >> 1) - _mouse_pos.x)
+				/float(Globals.SCREEN_SIZE.x >> 0b10)
+			)
+			_mouse_down.set_strength(
+				(_mouse_pos.y - float(Globals.SCREEN_SIZE.y >> 1))
+				/float(Globals.SCREEN_SIZE.y >> 0b10)
+			)
+			_mouse_up.set_strength(
+				(float(Globals.SCREEN_SIZE.y >> 1) - _mouse_pos.y)
+				/float(Globals.SCREEN_SIZE.y >> 0b10)
+			)
+
+		Input.parse_input_event(_mouse_right)
+		Input.parse_input_event(_mouse_left)
+		Input.parse_input_event(_mouse_down)
+		Input.parse_input_event(_mouse_up)
+
 		if (Input.is_action_just_released("down")):
 			_hare_sprite.play("down")
 
