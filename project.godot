@@ -23,6 +23,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="uid://bau183h8uxd3r"
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 Globals="*res://src/globals.gd"
